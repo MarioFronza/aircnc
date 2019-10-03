@@ -3,7 +3,7 @@
   <br>
 </h1>
 
-<p align="center">Aplication developed at omnistack week</p>
+<p align="center">Aplication developed on the omnistack week</p>
 
 <hr />
 
