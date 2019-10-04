@@ -16,7 +16,7 @@ function SpotList({ tech, navigation }) {
 
   useEffect(() => {
     async function loadSpots() {
-      const response = await api.get("/sposts", {
+      const response = await api.get("/spots", {
         params: { tech }
       });
 
@@ -27,7 +27,7 @@ function SpotList({ tech, navigation }) {
   }, []);
 
   function handleNavigate(id) {
-    mavigation.navigate("Book", { id });
+    navigation.navigate("Book", { id });
   }
 
   return (
@@ -51,7 +51,10 @@ function SpotList({ tech, navigation }) {
             <Text style={styles.price}>
               {item.price ? `R$${item.price}/dia` : "GRATUITO"}
             </Text>
-            <TouchableOpacity onPress={() => handleNavigate(item._id)}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => handleNavigate(item._id)}
+            >
               <Text style={styles.buttonText}>Solicitar reserva</Text>
             </TouchableOpacity>
           </View>
@@ -63,7 +66,7 @@ function SpotList({ tech, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTOp: 30
+    marginTop: 30
   },
   title: {
     fontSize: 20,

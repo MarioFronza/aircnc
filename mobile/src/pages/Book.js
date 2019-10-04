@@ -4,7 +4,9 @@ import {
   AsyncStorage,
   StyleSheet,
   TouchableOpacity,
-  Alert
+  Alert,
+  Text,
+  TextInput
 } from "react-native";
 
 import api from "../services/api";
@@ -12,11 +14,10 @@ import api from "../services/api";
 export default function Book({ navigation }) {
   const [date, setDate] = useState("");
   const id = navigation.getParam("id");
-
   async function handleSubmit() {
     const user_id = await AsyncStorage.getItem("user");
     await api.post(
-      `/spots/${bookings}`,
+      `/spots/${id}/bookings`,
       {
         date
       },
@@ -25,7 +26,7 @@ export default function Book({ navigation }) {
       }
     );
 
-    Alert("Solicitação de reserva enviada.");
+    Alert.alert("Solicitação de reserva enviada.");
     navigation.navigate("List");
   }
 
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#444",
     marginBottom: 8,
-    marginTIo: 30
+    marginTop: 30
   },
   input: {
     borderWidth: 1,
